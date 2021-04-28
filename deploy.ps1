@@ -1,6 +1,6 @@
 $bicepFile=".\main.bicep"
 $paramfile=".\main.parameters.json"
-$myrg="myResourceGroupDev"
+$myrg="myResourceGroupDev2"
 
 az group create   --name $myrg   --location "Japan East"
 az deployment group create   --name devenvironment   --resource-group $myrg   --template-file $bicepFile --parameters $paramfile --output json > main.output.json
@@ -11,13 +11,10 @@ $hostname=$json.properties.outputs.hostname.value
 $User=$json.properties.outputs.username.value
 $password=$json.properties.outputs.password.value
 
-az vm user update --name "SimpleWinVM" --resource-group $myrg --username $User --password $password
+#az vm user update --name "SimpleWinVM" --resource-group $myrg --username $User --password $password
 
 #connect VM
 cmdkey /generic:TERMSRV/$hostname /user:$User /pass:$password
 mstsc /v:$hostname
-cmdkey /delete:TERMSRV/$hostname
+#cmdkey /delete:TERMSRV/$hostname
 
-#vm stop and deallocate
-az vm stop --name "SimpleWinVM" --resource-group $myrg 
-az vm deallocate  --name "SimpleWinVM" --resource-group $myrg 
