@@ -1,5 +1,3 @@
-$bicepFile=".\main.bicep"
-$paramfile=".\main.parameters.json"
 $myrg="myResourceGroupDev"
 
 #delete resource group
