@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "accountName": {
+            "value": "automation"
+        },
+        "location": {
+            "value": "japaneast"
+        },
+        "sampleGraphicalRunbookName": {
+            "value": "AzureAutomationTutorial"
+        },
+        "sampleGraphicalRunbookDescription": {
+            "value": "実行アカウント (サービス プリンシパル) を使用してすべての ARM リソースを取得するサンプル Runbook。"
+        },
+        "sampleGraphicalRunbookContentUri": {
+            "value": "https://eus2oaasibizamarketprod1.blob.core.windows.net/marketplace-runbooks/AzureAutomationTutorial.graphrunbook"
+        },
+        "samplePowerShellRunbookName": {
+            "value": "AzureAutomationTutorialScript"
+        },
+        "samplePowerShellRunbookDescription": {
+            "value": "実行アカウント (サービス プリンシパル) を使用してすべての ARM リソースを取得するサンプル Runbook。"
+        },
+        "samplePowerShellRunbookContentUri": {
+            "value": "https://eus2oaasibizamarketprod1.blob.core.windows.net/marketplace-runbooks/AzureAutomationTutorial.ps1"
+        },
+        "samplePython2RunbookName": {
+            "value": "AzureAutomationTutorialPython2"
+        },
+        "samplePython2RunbookDescription": {
+            "value": "実行アカウント (サービス プリンシパル) を使用してすべての ARM リソースを取得するサンプル Runbook。"
+        },
+        "samplePython2RunbookContentUri": {
+            "value": "https://eus2oaasibizamarketprod1.blob.core.windows.net/marketplace-runbooks/AzureAutomationTutorialPython2.py"
+        }
+    }
+}

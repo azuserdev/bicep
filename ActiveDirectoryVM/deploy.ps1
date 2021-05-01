@@ -1,9 +1,6 @@
-$currentDir = Split-Path $MyInvocation.MyCommand.path
-Set-Location $currentDir
-
 $bicepFile=".\main.bicep"
 $paramfile=".\main.parameters.json"
-$myrg="myResourceGroupDev2"
+$myrg="myResourceGroupAD"
 
 az group create   --name $myrg   --location "Japan East"
 az deployment group create   --name devenvironment   --resource-group $myrg   --template-file $bicepFile --parameters $paramfile --output json > main.output.json
