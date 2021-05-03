@@ -17,6 +17,9 @@ var publicIPAddressName = 'myPublicIP'
 
 param subnetRef string
 
+var vmExtensionName = 'dscExtension'
+param configurationFunction string = 'ADDomainNewForestConfig.ps1\\ADDomain_NewForest_Config -ConfigurationData $cd'
+
 @allowed([
   '2008-R2-SP1'
   '2012-Datacenter'
@@ -117,7 +120,36 @@ resource VM 'Microsoft.Compute/virtualMachines@2020-06-01' = {
   }
 }
 
+resource vmext 'Microsoft.Compute/virtualMachines/extensions@2020-12-01' = {
+  name: '${VM.name}/${vmExtensionName}'
+  location: location
+  properties: {
+    publisher: 'Microsoft.Powershell'
+    type: 'DSC'
+    typeHandlerVersion: '2.7'
+    autoUpgradeMinorVersion: true
+    settings: {
+      ModulesUrl: 'https://github.com/azuserdev/bicep/blob/master/ActiveDirectoryVM/ADDS.zip?raw=true'
+      ConfigurationFunction: configurationFunction
+      Properties: {
+        Credential: {
+          UserName: adminUserName
+          Password: 'PrivateSettingsRef:Key1'
+        }
+        SafeModePassword: {
+          UserName: adminUserName
+          Password: 'PrivateSettingsRef:Key1'
+        }
+      }
+    }
+    protectedSettings: {
+      Items: {
+        Key1: adminPassword
+      }
 
+      }
+    }
+  }
 
 output hostname string = pip.properties.dnsSettings.fqdn
 output username string = VM.properties.osProfile.adminUsername

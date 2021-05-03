@@ -17,6 +17,8 @@ var publicIPAddressName = 'myPublicIP'
 
 param subnetRef string
 
+
+
 @allowed([
   '2008-R2-SP1'
   '2012-Datacenter'
