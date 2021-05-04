@@ -1,5 +1,6 @@
 param adminUserName string
 
+@secure()
 param adminPassword string = concat('P', uniqueString(resourceGroup().id, adminUserName), 'x', '!')
 param dnsLabelPrefix string
 

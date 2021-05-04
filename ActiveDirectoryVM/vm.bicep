@@ -18,7 +18,8 @@ var publicIPAddressName = 'myPublicIP'
 param subnetRef string
 
 var vmExtensionName = 'dscExtension'
-param configurationFunction string = 'ADDomainNewForestConfig.ps1\\ADDomain_NewForest_Config -ConfigurationData $cd'
+param configurationFunction string = 'ADDomainNewForestConfig.ps1\\ADDomain_NewForest_Config'
+//param configurationFunction string = 'ADDomainNewForestConfig.ps1\\ADDomain_NewForest_Config -ConfigurationData $cd'
 
 @allowed([
   '2008-R2-SP1'
