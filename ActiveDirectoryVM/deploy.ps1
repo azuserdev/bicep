@@ -12,7 +12,7 @@ $hostname=$json.properties.outputs.hostname.value
 $User=$json.properties.outputs.username.value
 $password=$json.properties.outputs.password.value
 
-#az vm user update --name "SimpleWinVM" --resource-group $myrg --username $User --password $password
+az vm restart --name "SimpleWinVM" --resource-group $myrg 
 
 #connect VM
 cmdkey /generic:TERMSRV/$hostname /user:contoso\$User /pass:$password
